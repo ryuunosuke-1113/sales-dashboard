@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #333;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px 50px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+  color: #1e3a8a;
+}
+
+.header p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 22px;
+  color: #1f2937;
+}
+
+/* フォーム */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input,
+select,
+button {
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+button {
+  padding: 10px 16px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.add-button {
+  margin-top: 18px;
+}
+
+/* 検索 */
+.filter-box {
+  display: grid;
+  grid-template-columns: 1fr 220px 140px;
+  gap: 12px;
+}
+
+/* 集計 */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.summary-card {
+  text-align: center;
+  background: #eff6ff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.summary-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #374151;
+}
+
+.summary-card p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #1d4ed8;
+}
+
+/* 一覧 */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: bold;
+}
+
+td {
+  background: #fff;
+}
+
+.delete-btn {
+  background: #dc2626;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.delete-btn:hover {
+  opacity: 0.9;
+}
+
+/* グラフ */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.chart-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: 360px;
+}
+
+.chart-card h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: #374151;
+}
+
+.chart-card canvas {
+  width: 100% !important;
+  height: calc(100% - 40px) !important;
+}
+.message-area {
+  min-height: 24px;
+  margin: 0 0 16px;
+  text-align: center;
+  font-weight: bold;
+  color: #2563eb;
+}
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.sample-button {
+  background: #059669;
+}
+
+.sample-button:hover {
+  opacity: 0.9;
+}
+
+.clear-all-button {
+  background: #dc2626;
+}
+
+.clear-all-button:hover {
+  opacity: 0.9;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 14px 40px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+
+  .filter-box {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    height: 320px;
+  }
+
+  table {
+    min-width: 600px;
+  }
+}
