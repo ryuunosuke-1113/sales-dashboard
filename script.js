@@ -8,6 +8,7 @@ const categoryInput = document.getElementById("category");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const resetButton = document.getElementById("resetButton");
+const exportCsvButton = document.getElementById("exportCsvButton");
 const sampleDataButton = document.getElementById("sampleDataButton");
 const clearAllButton = document.getElementById("clearAllButton");
 
@@ -156,20 +157,23 @@ function renderCharts(data) {
     },
   });
 }
-
-function renderSales() {
-  salesList.innerHTML = "";
-
+function getFilteredSales() {
   const keyword = searchInput.value.toLowerCase();
   const selectedCategory = categoryFilter.value;
 
-  const filteredSales = salesData.filter((sale) => {
+  return salesData.filter((sale) => {
     const matchesKeyword = sale.product.toLowerCase().includes(keyword);
     const matchesCategory =
       selectedCategory === "all" || sale.category === selectedCategory;
 
     return matchesKeyword && matchesCategory;
   });
+}
+
+function renderSales() {
+  salesList.innerHTML = "";
+
+const filteredSales = getFilteredSales();
 
   if (filteredSales.length === 0) {
     salesList.innerHTML = `
@@ -271,6 +275,49 @@ function insertSampleData() {
   showMessage("サンプルデータを投入しました。");
 }
 
+function exportCsv() {
+  const filteredSales = getFilteredSales();
+
+  if (filteredSales.length === 0) {
+    alert("出力するデータがありません。");
+    return;
+  }
+
+  const header = ["日付", "商品名", "売上金額", "カテゴリ"];
+
+  const rows = filteredSales.map((sale) => [
+    sale.date,
+    sale.product,
+    sale.amount,
+    sale.category,
+  ]);
+
+  const csvData = [header, ...rows]
+    .map((row) =>
+      row.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(",")
+    )
+    .join("\n");
+
+  const bom = "\uFEFF";
+  const blob = new Blob([bom + csvData], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const fileName = `sales-data-${yyyy}${mm}${dd}.csv`;
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = fileName;
+  link.click();
+
+  URL.revokeObjectURL(url);
+
+  showMessage("CSVを出力しました。");
+}
+
 function clearAllSales() {
   const isConfirmed = confirm("全データを削除しますか？");
 
@@ -307,6 +354,7 @@ salesList.addEventListener("click", (event) => {
     deleteSale(id);
   }
 });
+exportCsvButton.addEventListener("click", exportCsv);
 
 loadSales();
 setTodayDate();

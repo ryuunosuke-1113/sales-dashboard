@@ -228,7 +228,17 @@ td {
 .clear-all-button:hover {
   opacity: 0.9;
 }
+.export-area {
+  margin-top: 16px;
+}
 
+.export-button {
+  background: #0f766e;
+}
+
+.export-button:hover {
+  opacity: 0.9;
+}
 /* レスポンシブ */
 @media (max-width: 768px) {
   .container {
