@@ -129,3 +129,6 @@
 ![アプリ画面](images/screenshot.png)
 ![検索画面](images/screenshot1.png)
 ---
+## 🌐 URL
+- GitHub Pages: https://ryuunosuke-1113.github.io/sales-dashboard
+- GitHub Repository: https://github.com/ryuunosuke-1113/sales-dashboard
