@@ -130,6 +130,7 @@
 
 ```md
 ![アプリ画面](./images/screenshot.png)
+![アプリ画面](./images/screenshot1.png)
 ```
 
 ---
