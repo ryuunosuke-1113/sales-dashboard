@@ -129,8 +129,8 @@
 ※ここに画像を追加してください
 
 ```md
-![アプリ画面](./images/screenshot.png)
-![アプリ画面](./images/screenshot1.png)
+![アプリ画面](images/screenshot.png)
+![アプリ画面](images/screenshot1.png)
 ```
 
 ---
